@@ -25,16 +25,17 @@ for addr in addresses:
 	print "Searching ..."
 	print "Street Number: {0}\nStreet Name: {1}".format(street_num, street_name)
 
-	driver.save_screenshot("search.png")
+	
+	#driver.save_screenshot("search.png")
 
 	# Fill form with above information
 	driver.find_element_by_xpath('//*[@id="ctl00_cphMain1_txtStreetNo"]').send_keys(street_num)
 	driver.find_element_by_xpath('//*[@id="ctl00_cphMain1_txtStreetName"]').send_keys(street_name)
-	driver.save_screenshot("filled_form.png")
+	#driver.save_screenshot("filled_form.png")
 
 	# Execute Search
 	driver.find_element_by_xpath('//*[@id="ctl00_cphMain1_btnSearch"]').click()
-	driver.save_screenshot("results.png")
+	#driver.save_screenshot("results.png")
 
 	# Extract Parcel Number if results found:
 	rows = driver.find_elements_by_class_name("parcelRow")
@@ -42,7 +43,7 @@ for addr in addresses:
 		tds = rows[0].find_elements_by_tag_name("td")
 		parcel_num = tds[3].text.strip()
 		print "Parcel # {0} found for Address: {1}".format(parcel_num,addr)
-		results_file.write(parcel_num + "\t" + addr + "\n")
+		results_file.write(parcel_num + "\t" + addr)
 	else:
 		print "No results found for Address: {0}".format(addr)
 		

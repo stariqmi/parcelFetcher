@@ -46,4 +46,5 @@ for addr in addresses:
 		results_file.write(parcel_num + "\t" + addr)
 	else:
 		print "No results found for Address: {0}".format(addr)
+		results_file.write("0000000" + "\t" + addr)
 		
